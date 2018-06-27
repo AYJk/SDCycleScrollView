@@ -36,6 +36,7 @@
 @implementation SDCollectionViewCell
 {
     __weak UILabel *_titleLabel;
+    __weak UILabel *_subTitleLabel;
 }
 
 
@@ -44,6 +45,7 @@
     if (self = [super initWithFrame:frame]) {
         [self setupImageView];
         [self setupTitleLabel];
+        [self setupSubTitleLabel];
     }
     
     return self;
@@ -55,16 +57,32 @@
     _titleLabel.backgroundColor = titleLabelBackgroundColor;
 }
 
+- (void)setSubTitleLabelBackgroundColor:(UIColor *)subTitleLabelBackgroundColor {
+    _subTitleLabelBackgroundColor = subTitleLabelBackgroundColor;
+    _subTitleLabel.backgroundColor = subTitleLabelBackgroundColor;
+}
+
 - (void)setTitleLabelTextColor:(UIColor *)titleLabelTextColor
 {
     _titleLabelTextColor = titleLabelTextColor;
     _titleLabel.textColor = titleLabelTextColor;
 }
 
+- (void)setSubTitleLabelTextColor:(UIColor *)subTitleLabelTextColor {
+    _subTitleLabelTextColor = subTitleLabelTextColor;
+    _subTitleLabel.textColor = subTitleLabelTextColor;
+}
+
 - (void)setTitleLabelTextFont:(UIFont *)titleLabelTextFont
 {
     _titleLabelTextFont = titleLabelTextFont;
     _titleLabel.font = titleLabelTextFont;
+}
+
+- (void)setSubTitleLabelTextFont:(UIFont *)subTitleLabelTextFont
+{
+    _subTitleLabelTextFont = subTitleLabelTextFont;
+    _subTitleLabel.font = subTitleLabelTextFont;
 }
 
 - (void)setupImageView
@@ -82,6 +100,13 @@
     [self.contentView addSubview:titleLabel];
 }
 
+- (void)setupSubTitleLabel {
+    UILabel *subTitleLabel = [[UILabel alloc] init];
+    _subTitleLabel = subTitleLabel;
+    _subTitleLabel.hidden = YES;
+    [self.contentView addSubview:subTitleLabel];
+}
+
 - (void)setTitle:(NSString *)title
 {
     _title = [title copy];
@@ -91,10 +116,23 @@
     }
 }
 
+- (void)setSubTitle:(NSString *)subTitle {
+    _subTitle = [subTitle copy];
+    _subTitleLabel.text = [NSString stringWithFormat:@"%@", subTitle];
+    if (_subTitleLabel.hidden) {
+        _subTitleLabel.hidden = NO;
+    }
+}
+
 -(void)setTitleLabelTextAlignment:(NSTextAlignment)titleLabelTextAlignment
 {
     _titleLabelTextAlignment = titleLabelTextAlignment;
     _titleLabel.textAlignment = titleLabelTextAlignment;
+}
+
+- (void)setSubTitleLabelTextAlignment:(NSTextAlignment)subTitleLabelTextAlignment {
+    _subTitleLabelTextAlignment = subTitleLabelTextAlignment;
+    _subTitleLabel.textAlignment = subTitleLabelTextAlignment;
 }
 
 - (void)layoutSubviews
@@ -102,7 +140,12 @@
     [super layoutSubviews];
     
     if (self.onlyDisplayText) {
-        _titleLabel.frame = self.bounds;
+        if (self.isShowSubTitle) {
+            _subTitleLabel.frame = CGRectMake(self.bounds.size.width - _subTitleLabelWidth, 0, _subTitleLabelWidth, self.bounds.size.height);
+            _titleLabel.frame = CGRectMake(0, 0, self.bounds.size.width - _subTitleLabelWidth, self.bounds.size.height);
+        } else {
+            _titleLabel.frame = self.bounds;
+        }
     } else {
         _imageView.frame = self.bounds;
         CGFloat titleLabelW = self.sd_width;
@@ -114,3 +157,4 @@
 }
 
 @end
+

@@ -43,9 +43,17 @@
 @property (nonatomic, assign) CGFloat titleLabelHeight;
 @property (nonatomic, assign) NSTextAlignment titleLabelTextAlignment;
 
+@property (copy, nonatomic) NSString *subTitle;
+@property (nonatomic, strong) UIColor *subTitleLabelTextColor;
+@property (nonatomic, strong) UIFont *subTitleLabelTextFont;
+@property (nonatomic, strong) UIColor *subTitleLabelBackgroundColor;
+@property (nonatomic, assign) CGFloat subTitleLabelHeight;
+@property (nonatomic, assign) CGFloat subTitleLabelWidth;
+@property (nonatomic, assign) NSTextAlignment subTitleLabelTextAlignment;
+
 @property (nonatomic, assign) BOOL hasConfigured;
 
 /** 只展示文字轮播 */
 @property (nonatomic, assign) BOOL onlyDisplayText;
-
+@property (nonatomic, assign) BOOL isShowSubTitle;
 @end

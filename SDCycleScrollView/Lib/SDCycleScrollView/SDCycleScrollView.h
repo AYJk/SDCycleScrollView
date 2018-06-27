@@ -102,6 +102,9 @@ typedef enum {
 /** 每张图片对应要显示的文字数组 */
 @property (nonatomic, strong) NSArray *titlesGroup;
 
+/** 子文字数组 */
+@property (nonatomic, strong) NSArray *subTitlesGroup;
+
 /** 本地图片数组 */
 @property (nonatomic, strong) NSArray *localizationImageNamesGroup;
 
@@ -195,6 +198,27 @@ typedef enum {
 
 /** 轮播文字label对齐方式 */
 @property (nonatomic, assign) NSTextAlignment titleLabelTextAlignment;
+
+/** 轮播文字subLabel字体颜色 */
+@property (nonatomic, strong) UIColor *subTitleLabelTextColor;
+
+/** 轮播文字subLabel字体大小 */
+@property (nonatomic, strong) UIFont  *subTitleLabelTextFont;
+
+/** 轮播文字subLabel背景颜色 */
+@property (nonatomic, strong) UIColor *subTitleLabelBackgroundColor;
+
+/** 轮播文字subLabel高度 */
+@property (nonatomic, assign) CGFloat subTitleLabelHeight;
+
+/** 轮播文字subLabel宽度 */
+@property (nonatomic, assign) CGFloat subTitleLabelWidth;
+
+/** 轮播文字subLabel对齐方式 */
+@property (nonatomic, assign) NSTextAlignment subTitleLabelTextAlignment;
+
+/** 是否显示subLabel */
+@property (nonatomic, assign) BOOL isShowSubTitleLabel;
 
 /** 滚动手势禁用（文字轮播较实用） */
 - (void)disableScrollGesture;

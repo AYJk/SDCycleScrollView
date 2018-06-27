@@ -602,16 +602,28 @@ NSString * const ID = @"SDCycleScrollViewCell";
         cell.title = _titlesGroup[itemIndex];
     }
     
+    if (_subTitlesGroup.count && itemIndex < _subTitlesGroup.count) {
+        cell.subTitle = _subTitlesGroup[itemIndex];
+    }
+    
     if (!cell.hasConfigured) {
         cell.titleLabelBackgroundColor = self.titleLabelBackgroundColor;
         cell.titleLabelHeight = self.titleLabelHeight;
         cell.titleLabelTextAlignment = self.titleLabelTextAlignment;
         cell.titleLabelTextColor = self.titleLabelTextColor;
         cell.titleLabelTextFont = self.titleLabelTextFont;
+        
+        cell.subTitleLabelBackgroundColor = self.subTitleLabelBackgroundColor;
+        cell.subTitleLabelHeight = self.subTitleLabelHeight;
+        cell.subTitleLabelWidth = self.subTitleLabelWidth;
+        cell.subTitleLabelTextAlignment = self.subTitleLabelTextAlignment;
+        cell.subTitleLabelTextColor = self.subTitleLabelTextColor;
+        cell.subTitleLabelTextFont = self.subTitleLabelTextFont;
         cell.hasConfigured = YES;
         cell.imageView.contentMode = self.bannerImageViewContentMode;
         cell.clipsToBounds = YES;
         cell.onlyDisplayText = self.onlyDisplayText;
+        cell.isShowSubTitle = self.isShowSubTitleLabel;
     }
     
     return cell;

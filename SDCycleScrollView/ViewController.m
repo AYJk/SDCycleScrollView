@@ -140,12 +140,17 @@
     SDCycleScrollView *cycleScrollView4 = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 750, w, 40) delegate:self placeholderImage:nil];
     cycleScrollView4.scrollDirection = UICollectionViewScrollDirectionVertical;
     cycleScrollView4.onlyDisplayText = YES;
+    cycleScrollView4.isShowSubTitleLabel = YES;
     
     NSMutableArray *titlesArray = [NSMutableArray new];
     [titlesArray addObject:@"纯文字上下滚动轮播"];
     [titlesArray addObject:@"纯文字上下滚动轮播 -- demo轮播图4"];
     [titlesArray addObjectsFromArray:titles];
     cycleScrollView4.titlesGroup = [titlesArray copy];
+    cycleScrollView4.subTitleLabelTextAlignment = NSTextAlignmentRight;
+    cycleScrollView4.subTitleLabelTextFont = [UIFont systemFontOfSize:13];
+    cycleScrollView4.subTitleLabelWidth = 50;
+    cycleScrollView4.subTitlesGroup = @[@"5分钟前", @"5分钟前", @"5分钟前", @"5分钟前", @"5分钟前", @"5分钟前", @"5分钟前"];
     [cycleScrollView4 disableScrollGesture];
     
     [demoContainerView addSubview:cycleScrollView4];
